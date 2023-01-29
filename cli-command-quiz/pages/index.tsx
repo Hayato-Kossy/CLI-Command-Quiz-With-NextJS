@@ -81,12 +81,20 @@ export default function Home() {
           </Box>
           <Box maxWidth='sm' sx={{ marginTop: 5, }}>
             {!isAuth ? (
-              <Button onClick={logIn} variant='outlined' size='large'>
+              <Button 
+              onClick={logIn} 
+              variant='contained' 
+              size='large'
+              color='primary'>
                 <GoogleIcon />
                 Login
               </Button>
             ) : (
-              <Button onClick={logOut} variant='outlined' size='large'>
+              <Button 
+              onClick={logOut} 
+              variant='contained' 
+              size='large'
+              color='primary'>
                 <GoogleIcon />
                 Logout
               </Button>
