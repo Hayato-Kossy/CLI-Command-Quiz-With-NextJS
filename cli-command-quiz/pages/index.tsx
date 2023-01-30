@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth';
 import { auth, signIn } from '../src/firebase';
 import { useRouter } from 'next/router';
 import { Layout } from '../componets/Layout';
-
+import freeMode from './freeMode/[id]';
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -26,6 +26,10 @@ export default function Home() {
       setIsAuth(false);
     });
   };
+
+  const goToFreeMode = () => {
+    router.push(`/freeMode/${localStorage.getItem('userId')}`)
+  }
   return (
     <Layout title='Title'>
       <Container maxWidth='lg'>
@@ -75,6 +79,7 @@ export default function Home() {
             variant='outlined' 
             size='large'
             color='success'
+            onClick={goToFreeMode}
             >
               フリーモード
             </Button>
