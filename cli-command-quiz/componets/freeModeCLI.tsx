@@ -24,7 +24,8 @@ function FreeModeCLI({ userName }: { userName: string}) {
         if (e.nativeEvent.isComposing || e.key !== 'Enter' || CLIInputDiv == "") return
         console.log(CLIInputDiv);
         setCLIInputDiv("");
-        appendEchoParagrah()
+        appendEchoParagrah();
+        appendResultParagraph("No Results")
     }
 
     const appendEchoParagrah = () => {
@@ -35,6 +36,16 @@ function FreeModeCLI({ userName }: { userName: string}) {
         <span>&nbsp;${userName}</span>
         <span>@</span>
         <span className='mr-3'> MacBook %&nbsp;${CLIInputDiv}</span>
+        </div>
+        `
+    }
+
+    const appendResultParagraph =(message:string) => {
+        let CLITextOutPut = document.getElementById("CLITextOutPut")!
+        CLITextOutPut.innerHTML += 
+        `
+        <div class="m-0 output-text">
+        <span>&nbsp;${userName}</span> % ${message}
         </div>
         `
     }
