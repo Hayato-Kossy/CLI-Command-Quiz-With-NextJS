@@ -27,6 +27,11 @@ export default function Home() {
     });
   };
 
+  const loginAsGuest = () => {
+    const guest = "guest"
+    localStorage.setItem("userName", guest);
+  }
+
   const goToFreeMode = () => {
     router.push(`/freeMode/${localStorage.getItem('userId')}`)
   }
@@ -105,6 +110,14 @@ export default function Home() {
               </Button>
             )}
           </Box>
+          <Button 
+            onClick={loginAsGuest} 
+            variant='contained' 
+            size='large'
+            color='primary'
+            sx={{ marginTop: 5 }}>
+              Guest
+          </Button>
         </Box>
       </Container>
     </Layout>  
