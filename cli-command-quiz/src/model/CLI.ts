@@ -19,8 +19,8 @@ export class CLI{
         this.User = new FileSystem();
         this.Answer = [];
         this.QuestionID = "";
-        this.CLITextInputDiv = document.getElementById("CLIInputDiv") as HTMLInputElement;
-        this.CLITextOutputDiv = document.getElementById("CLIOutputDiv") as HTMLElement;
+        this.CLITextInputDiv =<HTMLInputElement>document.getElementById('CLIInputDiv'); 
+        this.CLITextOutputDiv = <HTMLInputElement>document.getElementById("CLIOutputDiv");
         this.vueCLI = document.getElementById("content");
     }
 
