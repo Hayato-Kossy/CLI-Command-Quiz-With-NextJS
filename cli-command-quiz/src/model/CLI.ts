@@ -6,9 +6,9 @@ export class CLI{
     private User:FileSystem;
     private Answer:Array<string>;
     private QuestionID:string;
-    private CLITextInputDiv:HTMLInputElement
-    private CLITextOutputDiv:HTMLElement;
-    private vueCLI:HTMLElement|null;
+    // private CLITextInputDiv:HTMLInputElement
+    // private CLITextOutputDiv:HTMLElement;
+    // private vueCLI:HTMLElement|null;
 
     constructor(){
         this.CLITextInput = ""
@@ -19,9 +19,9 @@ export class CLI{
         this.User = new FileSystem();
         this.Answer = [];
         this.QuestionID = "";
-        this.CLITextInputDiv =<HTMLInputElement>document.getElementById('CLIInputDiv'); 
-        this.CLITextOutputDiv = <HTMLInputElement>document.getElementById("CLIOutputDiv");
-        this.vueCLI = document.getElementById("content");
+        // this.CLITextInputDiv =<HTMLInputElement>document.getElementById('CLIInputDiv'); 
+        // this.CLITextOutputDiv = <HTMLInputElement>document.getElementById("CLIOutputDiv");
+        // this.vueCLI = document.getElementById("content");
     }
 
     public get getCLITextInput():string{
@@ -52,21 +52,21 @@ export class CLI{
         return this.User;
     }
 
-    public get getCLITextOutputDiv():HTMLElement|null{
-        return this.CLITextOutputDiv;
-    }
+    // public get getCLITextOutputDiv():HTMLElement|null{
+    //     return this.CLITextOutputDiv;
+    // }
 
-    public get getVueCLI():HTMLElement|null{
-        return this.vueCLI;
-    }
+    // public get getVueCLI():HTMLElement|null{
+    //     return this.vueCLI;
+    // }
 
-    public get getCLITextInputDiv():HTMLInputElement{
-        return this.CLITextInputDiv;
-    }
+    // public get getCLITextInputDiv():HTMLInputElement{
+    //     return this.CLITextInputDiv;
+    // }
 
-    public set setCLITextInputDiv(text:string){
-        this.CLITextInputDiv.value = text;
-    }
+    // public set setCLITextInputDiv(text:string){
+    //     this.CLITextInputDiv.value = text;
+    // }
 
     public get getQuestionID():string{
         return this.QuestionID;
@@ -76,11 +76,11 @@ export class CLI{
         this.QuestionID = number;
     }
     //CLIに入力された文字列をスペースごとに配列に格納するメソッド
-    public commandLineParser():string[]{
-        let parsedStringInputArray:string[] = this.CLITextInputDiv.value.trim().split(" ");
-        this.setCLITextInput = this.CLITextInputDiv.value;
-        return parsedStringInputArray;
-    }
+    // public commandLineParser():string[]{
+    //     let parsedStringInputArray:string[] = this.CLITextInputDiv.value.trim().split(" ");
+    //     this.setCLITextInput = this.CLITextInputDiv.value;
+    //     return parsedStringInputArray;
+    // }
     //採点用メソッド、コマンドがあってるかだけでなく、コマンド入力の順番を確認する必要があるためスタックを採用
     public grading():boolean{
         let answerStack:Array<string> = this.Answer
@@ -107,7 +107,7 @@ export class CLI{
     //パースされたCLIへの入力を受け取り、ファイルディレクトリ構造を作成し、結果を文字列で返すメソッド
     public evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray:string[]):string{
         let result:string = "";
-        console.log(parsedStringInputArray);
+        // console.log(parsedStringInputArray);
         let argA:string = parsedStringInputArray[1];
         let argB:string = parsedStringInputArray[2];
         let commandName:string = parsedStringInputArray[0];

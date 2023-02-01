@@ -2,12 +2,13 @@ import * as React from 'react';
 import { useRef, useLayoutEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import { Controller } from '@/src/controller/Controller';
 import { CLI } from '@/src/model/CLI';
 import { HomeAppBar } from './appBar';
 
+const cli:CLI = new CLI();
+
 function FreeModeCLI({ userName }: { userName: string}) {
-    // const [CLIOutputDiv, setCLIOutputDiv] = useState('');
+    // Controller.activateCLI(cli);
     const [CLIInputDiv, setCLIInputDiv] = useState('');
     const handleChangeCLIInputDiv = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCLIInputDiv(e.target.value);
@@ -19,10 +20,10 @@ function FreeModeCLI({ userName }: { userName: string}) {
 
     const executeCLI = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.nativeEvent.isComposing || e.key !== 'Enter' || CLIInputDiv == "") return
-        console.log(CLIInputDiv);
         setCLIInputDiv("");
         appendEchoParagrah();
-        appendResultParagraph("No Results")
+        appendResultParagraph(evaluatedResultsString())
+        console.log(cli.getUserData)
     }
 
     const appendEchoParagrah = () => {
@@ -45,6 +46,11 @@ function FreeModeCLI({ userName }: { userName: string}) {
         <span>&nbsp;${userName}</span> % ${message}
         </div>
         `
+    }
+
+    const  evaluatedResultsString = () => {
+        let parsedStringInputArray:string[] = CLIInputDiv.trim().split(" ")
+        return cli.evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray)
     }
 
     return (
