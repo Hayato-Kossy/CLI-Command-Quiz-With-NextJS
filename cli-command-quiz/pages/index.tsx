@@ -7,7 +7,6 @@ import { signOut } from 'firebase/auth';
 import { auth, signIn } from '../src/firebase';
 import { useRouter } from 'next/router';
 import { Layout } from '../componets/Layout';
-import freeMode from './freeMode/[id]';
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -37,7 +36,7 @@ export default function Home() {
   }
   return (
     <Layout title='Title'>
-      <Container maxWidth='lg'>
+      <Container maxWidth='lg' sx={{color:"black"}}>
         <Box
           height='80vh'
           sx={{
@@ -46,6 +45,7 @@ export default function Home() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: 'black'
           }}
         >
           <Box sx={{ 
