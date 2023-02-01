@@ -18,9 +18,9 @@ export class View{
     public static appendResultParagraph(CLI:CLI,message:string):void{
         CLI.getCLITextOutputDiv!.innerHTML +=
         `
-        <p class="m-0 output-text">
-        <span>User</span> % ${message}
-        </p>
+            <p class="m-0 output-text">
+            <span>User</span> % ${message}
+            </p>
         `
     }
 

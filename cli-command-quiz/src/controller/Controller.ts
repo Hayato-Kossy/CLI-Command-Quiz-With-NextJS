@@ -15,7 +15,7 @@ export class Controller{
         });
     }
     //enterKeyの入力を受け取り、ViewクラスのCLIの表示や更新を司るメソッドを呼び出すメソッド
-    // public static async executeCLI(CLI:CLI){
+    // public static executeCLI(CLI:CLI){
     //     document.addEventListener("keydown", function(event) {
     //         if (event.key === "Enter"){
     //             let parsedStringInputArray:string[] = CLI.commandLineParser()
@@ -25,7 +25,6 @@ export class Controller{
     //         }
     //     });
     // }
-
     
     //提出ボタンの入力を受け取り、Viewクラスの採点結果を描画するメソッドを呼び出すメソッド
     public static callSubmit(CLI:CLI):void{

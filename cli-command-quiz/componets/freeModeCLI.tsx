@@ -4,28 +4,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { CLI } from '@/src/model/CLI';
 import { HomeAppBar } from './appBar';
-
 const cli:CLI = new CLI();
+let histories = ["",];
+let historiesCnt = 0;
 
 function FreeModeCLI({ userName }: { userName: string}) {
     // Controller.activateCLI(cli);
     const [CLIInputDiv, setCLIInputDiv] = useState('');
+
     const handleChangeCLIInputDiv = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCLIInputDiv(e.target.value);
     }
+
     const scrollBottomRef = useRef<HTMLDivElement>(null);
     useLayoutEffect(() => {
         scrollBottomRef?.current?.scrollIntoView();
     });
 
     const executeCLI = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.nativeEvent.isComposing || e.key !== 'Enter' || CLIInputDiv == "") return
-        setCLIInputDiv("");
-        appendEchoParagrah();
-        appendResultParagraph(evaluatedResultsString())
-        console.log(cli.getUserData)
-    }
+        if ( e.key === 'Enter') {        
+            if (CLIInputDiv !== "" && CLIInputDiv !== null) histories.push(CLIInputDiv)
+            setCLIInputDiv("");
+            appendEchoParagrah();
+            appendResultParagraph(evaluatedResultsString());
+            console.log(cli.getUserData);
+        } else if (e.key === "ArrowUp") {
+            cursorUpToGetHistories();
+        } else if (e.key === "ArrowDown") {
+            cursorDownToGetHistories();
+        }
 
+    }
+    
     const appendEchoParagrah = () => {
         let CLITextOutPut = document.getElementById("CLITextOutPut")!
         CLITextOutPut.innerHTML += 
@@ -49,8 +59,21 @@ function FreeModeCLI({ userName }: { userName: string}) {
     }
 
     const  evaluatedResultsString = () => {
-        let parsedStringInputArray:string[] = CLIInputDiv.trim().split(" ")
-        return cli.evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray)
+        let parsedStringInputArray:string[] = CLIInputDiv.trim().split(" ");
+        return cli.evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray);
+    }
+
+    const cursorUpToGetHistories = () =>{
+        setCLIInputDiv(histories[historiesCnt])
+        historiesCnt -= 1
+        if (0 > historiesCnt) historiesCnt = histories.length - 1
+        
+    }
+
+    const cursorDownToGetHistories = () => {
+        setCLIInputDiv(histories[historiesCnt])
+        historiesCnt += 1
+        if (histories.length <= historiesCnt) historiesCnt = 0
     }
 
     return (
@@ -87,9 +110,8 @@ function FreeModeCLI({ userName }: { userName: string}) {
         <div className="d-flex">
         <HomeAppBar></HomeAppBar>
         </div>
-        </header>
-            
-</>
+        </header>      
+        </>
         )
 }
 

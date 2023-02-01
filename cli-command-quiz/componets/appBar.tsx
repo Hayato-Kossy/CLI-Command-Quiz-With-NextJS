@@ -11,8 +11,6 @@ export const HomeAppBar = () => {
         <AppBar position="relative" style={{backgroundColor:"#565565"}}>
           <Toolbar>
             <IconButton
-            //   className={classes.menuButton}
-            //   color="success"
               aria-label="Menu"
             >
               <Menu fontSize="large"/>
