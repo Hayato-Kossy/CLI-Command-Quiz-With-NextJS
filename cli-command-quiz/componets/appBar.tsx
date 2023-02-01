@@ -17,7 +17,7 @@ export const HomeAppBar = () => {
             >
               <Menu fontSize="large"/>
             </IconButton>
-            <strong>ファイルディレクトリクイズ</strong>
+            <strong>ファイルディレクトリクイズ一覧</strong>
             <div style={{ flexGrow: 1 }}></div>
             <HomeButton></HomeButton>
           </Toolbar>

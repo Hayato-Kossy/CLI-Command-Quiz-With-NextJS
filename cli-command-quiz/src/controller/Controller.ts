@@ -15,16 +15,16 @@ export class Controller{
         });
     }
     //enterKeyの入力を受け取り、ViewクラスのCLIの表示や更新を司るメソッドを呼び出すメソッド
-    public static async executeCLI(CLI:CLI){
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter"){
-                let parsedStringInputArray:string[] = CLI.commandLineParser()
-                View.appendEchoParagraph(CLI)
-                View.appendResultParagraph(CLI,CLI.evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray))
-                View.resetCLITextInput(CLI)        
-            }
-        });
-    }
+    // public static async executeCLI(CLI:CLI){
+    //     document.addEventListener("keydown", function(event) {
+    //         if (event.key === "Enter"){
+    //             let parsedStringInputArray:string[] = CLI.commandLineParser()
+    //             View.appendEchoParagraph(CLI)
+    //             View.appendResultParagraph(CLI,CLI.evaluatedResultsStringFromParsedStringInputArray(parsedStringInputArray))
+    //             View.resetCLITextInput(CLI)        
+    //         }
+    //     });
+    // }
 
     
     //提出ボタンの入力を受け取り、Viewクラスの採点結果を描画するメソッドを呼び出すメソッド
@@ -47,6 +47,6 @@ export class Controller{
     public static activateCLI(CLI:CLI):void{
         // this.callSubmit(CLI);
         this.callHistoriesByKeyDown(CLI);
-        this.executeCLI(CLI);
+        // this.executeCLI(CLI);
     }
 }
