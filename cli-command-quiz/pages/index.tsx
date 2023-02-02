@@ -16,7 +16,7 @@ export default function Home() {
 
   const logIn = async () => {
     await signIn();
-    // router.push(`/mypage/${localStorage.getItem('userId')}`);
+    router.push(`/myPage/${localStorage.getItem('userId')}`);
     setIsAuth(true);
   };
   const logOut = () => {
@@ -29,11 +29,10 @@ export default function Home() {
   const loginAsGuest = () => {
     const guest = "guest"
     localStorage.setItem("userName", guest);
+    localStorage.setItem("userId", guest);
+    router.push(`/myPage/${localStorage.getItem('userId')}`);
   }
 
-  const goToFreeMode = () => {
-    router.push(`/freeMode/${localStorage.getItem('userId')}`)
-  }
   return (
     <Layout title='Title'>
       <Container maxWidth='lg' sx={{color:"black"}}>
@@ -57,37 +56,6 @@ export default function Home() {
           }}
           >
             <a style={{fontFamily:"Arial Black"}}>CLI Command Quiz</a>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Button 
-            sx={ { 
-              marginTop: 10, 
-              typography: 'h5'
-            }}
-            variant='outlined' 
-            size='large'
-            color='success'
-            >
-              <a style={{fontFamily:"Impact"}}>ファイルディレクトリクイズ</a>
-            </Button>
-            <Button 
-            sx={ { 
-              marginTop: 5, 
-              typography: 'h5'
-            }}
-            variant='outlined' 
-            size='large'
-            color='success'
-            onClick={goToFreeMode}
-            >
-              フリーモード
-            </Button>
           </Box>
           <Box maxWidth='sm' sx={{ marginTop: 5, }}>
             {!isAuth ? (

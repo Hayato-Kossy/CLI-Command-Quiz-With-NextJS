@@ -3,6 +3,7 @@ import { Button, Box, AppBar, Toolbar, IconButton, MenuItem } from "@mui/materia
 import { GitHub, Twitter, Instagram, Menu, Home } from '@mui/icons-material';
 import { useRouter } from "next/router";
 import { HomeButton } from "./homeButton";
+import MyPageButton from "./myPageButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const HomeAppBar = () => {
@@ -10,12 +11,8 @@ export const HomeAppBar = () => {
         <div style={{ flexGrow: 1}}>
         <AppBar position="relative" style={{backgroundColor:"#565565"}}>
           <Toolbar>
-            <IconButton
-              aria-label="Menu"
-            >
-              <Menu fontSize="large"/>
-            </IconButton>
-            <strong>ファイルディレクトリクイズ一覧</strong>
+            <MyPageButton></MyPageButton>
+
             <div style={{ flexGrow: 1 }}></div>
             <HomeButton></HomeButton>
           </Toolbar>

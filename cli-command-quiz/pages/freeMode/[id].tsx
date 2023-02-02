@@ -1,7 +1,7 @@
 import FreeModeCLI from "@/componets/freeModeCLI";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
-const userName = "guest"
+const userName = localStorage.getItem("userName")!
 
 const freeMode = () => {
     return(

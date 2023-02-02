@@ -33,7 +33,7 @@ function FreeModeCLI({ userName }: { userName: string}) {
         } else if (e.key === "ArrowDown") {
             cursorDownToGetHistories();
         }
-
+        else return
     }
     
     const appendEchoParagrah = () => {
